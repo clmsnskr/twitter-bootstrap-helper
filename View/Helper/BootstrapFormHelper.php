@@ -200,7 +200,10 @@ class BootstrapFormHelper extends FormHelper {
 	 * @return string
 	 */
 	public function input($field, $options = array()) {
+		$this->setEntity($field);
 		$options = $this->_parseInputOptions($field, $options);
+		$modelKey = $this->model();
+		$fieldKey = $this->field();
 		if (!isset($options['field'])) { return ''; }
 		$out = $help_inline = $help_block = '';
 		/*$model = $this->defaultModel;
@@ -234,6 +237,11 @@ class BootstrapFormHelper extends FormHelper {
 				array("class" => "help-block")
 			);
 		}
+		
+		if ($this->_introspectModel($modelKey, 'validates', $fieldKey)) {
+			$options['required'] = 'required';
+		}		
+		
 		$options["input"] = $this->_combineInput($options);
 		$input = $this->Html->tag(
 			"div",
@@ -244,6 +252,7 @@ class BootstrapFormHelper extends FormHelper {
 		if ($options["state"] !== false) {
 			$wrap_class = "{$wrap_class} {$options["state"]}";
 		}
+		
 		return $this->Html->tag(
 			"div",
 			$options['label'].$input,

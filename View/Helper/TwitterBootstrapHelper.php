@@ -35,9 +35,22 @@ class TwitterBootstrapHelper extends AppHelper {
 	public function input_addon($content, $input, $type = "append") {
 		return $this->BootstrapForm->inputAddon($content, $input, $type);
 	}
+	
+	public function create($model = null, $options = array()) {
+		return $this->BootstrapForm->create($model,$options);
+	}
+	
+	public function end($options = null) {
+		return $this->BootstrapForm->end($options);
+	}
 
 	public function search($name = null, $options = array()) {
 		return $this->BootstrapForm->search($name, $options);
+	}
+	
+	public function inputs($fields = null, $blacklist = null) {
+		//TODO Test this function to make sure both $fields and $blacklist work properly
+		return $this->BootstrapForm->inputs($fields,$blacklist);
 	}
 
 	public function input($field, $options = array()) {
