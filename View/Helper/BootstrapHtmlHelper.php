@@ -110,7 +110,7 @@ class BootstrapHtmlHelper extends HtmlHelper {
 	public function buttonOptions($options) {
 		$valid_styles = array(
 			"danger", "info", "primary",
-			"warning", "success", "inverse"
+			"warning", "success", "inverse", "link"
 		);
 		$valid_sizes = array("mini", "small", "large");
 		$style = isset($options["style"]) ? $options["style"] : "";

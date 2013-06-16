@@ -3,7 +3,7 @@
 class TwitterBootstrapHelper extends AppHelper {
 
 	public $helpers = array(
-		"TwitterBootstrap.Bootstrap",
+		"TwitterBootstrap.BootstrapMarkup",
 		"TwitterBootstrap.BootstrapHtml",
 		"TwitterBootstrap.BootstrapForm"
 	);
@@ -98,43 +98,44 @@ class TwitterBootstrapHelper extends AppHelper {
 	}
 
 	public function label($message = "", $style = "", $options = array()) {
-		return $this->Bootstrap->label($message, $style, $options);
+		return $this->BootstrapMarkup->label($message, $style, $options);
 	}
 
 	public function badge($num = 0, $style = "", $options = array()) {
-		return $this->Bootstrap->badge($num, $style, $options);
+		return $this->BootstrapMarkup->badge($num, $style, $options);
 	}
 
 	public function icon($name, $color = "black") {
-		return $this->Bootstrap->icon($name, $color);
+		return $this->BootstrapMarkup->icon($name, $color);
 	}
 
 	public function progress($options = array()) {
-		return $this->Bootstrap->progress($options);
+		return $this->BootstrapMarkup->progress($options);
 	}
 
 	public function alert($content, $options = array()) {
-		return $this->Bootstrap->alert($content, $options);
+		return $this->BootstrapMarkup->alert($content, $options);
 	}
 
 	public function flash($key = "flash", $options = array()) {
-		return $this->Bootstrap->flash($key, $options);
+		return $this->BootstrapMarkup->flash($key, $options);
 	}
 
 	public function flashes($options = array()) {
-		return $this->Bootstrap->flashes($options);
+		return $this->BootstrapMarkup->flashes($options);
 	}
 
 	public function _flash_content($key = "flash") {
-		return $this->Bootstrap->_flash_content($key);
+		return $this->BootstrapMarkup->_flash_content($key);
 	}
 
 	public function block($message = null, $options = array()) {
-		return $this->Bootstrap->block($message, $options);
+		return $this->BootstrapMarkup->block($message, $options);
 	}
 
 	public function page_header($title){
-		return $this->Bootstrap->pageHeader($title);
+		$title = ucfirst(strtolower(Inflector::humanize(Inflector::underscore($title))));
+		return $this->BootstrapMarkup->pageHeader($title);
 	}
 
 }
